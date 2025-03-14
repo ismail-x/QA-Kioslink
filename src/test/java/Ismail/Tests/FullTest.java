@@ -1,5 +1,6 @@
 package Ismail.Tests;
 
+import Ismail.PageObject.ConfirmationPage;
 import Ismail.PageObject.JoinUsPage;
 import Ismail.TestComponents.BaseTest;
 import org.openqa.selenium.By;
@@ -23,13 +24,10 @@ public class FullTest extends BaseTest {
         joinUsPage.inputData("THIS IS AUTOMATE TESTING WITH VALID DATA", "ismail.xdev@gmail.com", "123333231");
 
         //User Submitting and directing to confirmation email page
-//        driver.findElement(By.cssSelector("button[type='submit']")).click();
+        ConfirmationPage confirmationPage = joinUsPage.submitData();
 
-        // Find the element by CSS selector
-        WebElement paragraph = driver.findElement(By.cssSelector("p.text-gray-600.mb-6"));
-
-        // Assert that the text content is correct
+        //User find confirmationText and Assert that the text content is correct
         String expectedText = "Terima kasih telah mendaftar sebagai mitra KiosLink. Kami telah mengirimkan email konfirmasi ke alamat email Anda.";
-        Assert.assertEquals(expectedText, paragraph.getText());
+        Assert.assertEquals(expectedText, confirmationPage.confirmationTxt());
     }
 }

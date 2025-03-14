@@ -47,6 +47,9 @@ public class JoinUsPage extends AbstractComponent {
     @FindBy(id="jabatanPIC")
     WebElement userJabatanPIC;
 
+    @FindBy(css = "button[type='submit']")
+    WebElement userSubmit;
+
     public void inputData(String AutomateTesting, String email, String handphone){
        userNamaBadan.sendKeys(AutomateTesting);
        userBentukBadan.sendKeys(AutomateTesting);
@@ -59,4 +62,11 @@ public class JoinUsPage extends AbstractComponent {
        userPic.sendKeys(AutomateTesting);
        userJabatanPIC.sendKeys(AutomateTesting);
     }
+
+    public ConfirmationPage submitData(){
+        userSubmit.click();
+        ConfirmationPage confirmationPage = new ConfirmationPage(driver);
+        return confirmationPage;
+    }
+
 }
